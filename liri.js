@@ -21,7 +21,7 @@ var spotifyThis = function(songName) {
   spotify.search({ type: 'track', query: songName }, function(err, data) {
     if (err) {
       console.log(err);
-      return;
+    
     }
 
     var songs = data.tracks.items;
