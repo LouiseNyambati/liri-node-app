@@ -51,14 +51,13 @@ var getTweets = function() {
   	var client = new twitter(keys.twitterKeys);
 // Paramaters
   	var params = { screen_name: 'Louisemoraan', count: 20 };
-
-  	client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  	// If there's an error
-  		if(error){
-  		console.log("There's an error!");
-  		console.log(error);
-  		}
-    	if (!error) {
+    var tweet = function(error, tweets, response) {
+    // If there's an error
+      if(error){
+      console.log("There's an error!");
+      console.log(error);
+      }
+      if (!error) {
       var data = []; //empty array to hold data
       for (var i = 0; i < tweets.length; i++) {
         data.push({
@@ -69,7 +68,8 @@ var getTweets = function() {
       console.log(data);
       
     }
-  });
+  };
+  	client.get('statuses/user_timeline', params, tweet)
 };
 // Function to get the movie info
 var getMyMovie = function(movieName) {
